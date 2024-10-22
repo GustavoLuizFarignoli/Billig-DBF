@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "usuario")
 public class Usuario {
     @Id
-    @Column(name = "Id_usuario", nullable = false)
+    @Column(name = "id_usuario", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -23,8 +23,8 @@ public class Usuario {
     private String imagem;
 
     @ManyToOne
-    @JoinColumn(name = "`idtipo_usuario`")
-    private TipoUsuario idtipoUsuario;
+    @JoinColumn(name = "`id_tipo_usuario`")
+    private TipoUsuario tipoUsuario;
 
     public Integer getId() {
         return id;
@@ -66,12 +66,12 @@ public class Usuario {
         this.imagem = imagem;
     }
 
-    public TipoUsuario getIdtipoUsuario() {
-        return idtipoUsuario;
+    public TipoUsuario getTipoUsuario() {
+        return this.tipoUsuario;
     }
 
-    public void setIdtipoUsuario(TipoUsuario idtipoUsuario) {
-        this.idtipoUsuario = idtipoUsuario;
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
 }
