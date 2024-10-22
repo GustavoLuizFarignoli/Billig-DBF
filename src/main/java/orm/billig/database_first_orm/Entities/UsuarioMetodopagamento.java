@@ -1,18 +1,18 @@
-package orm.billig.database_first_orm;
+package orm.billig.database_first_orm.Entities;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "`usuario_endereço`")
-public class UsuarioEndereço {
+@Table(name = "usuario_metodopagamento")
+public class UsuarioMetodopagamento {
     @Id
-    @Column(name = "`Id_endereço`", nullable = false)
+    @Column(name = "id_metodopagamento", nullable = false)
     private Integer id;
 
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "`Id_endereço`", nullable = false)
-    private Endereço endereços;
+    @JoinColumn(name = "id_metodopagamento", nullable = false)
+    private MetodosPagamento metodosPagamento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_cliente")
@@ -26,12 +26,12 @@ public class UsuarioEndereço {
         this.id = id;
     }
 
-    public Endereço getEndereços() {
-        return endereços;
+    public MetodosPagamento getMetodosPagamento() {
+        return metodosPagamento;
     }
 
-    public void setEndereços(Endereço endereços) {
-        this.endereços = endereços;
+    public void setMetodosPagamento(MetodosPagamento metodosPagamento) {
+        this.metodosPagamento = metodosPagamento;
     }
 
     public Usuario getIdCliente() {

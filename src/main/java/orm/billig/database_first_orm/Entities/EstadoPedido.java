@@ -1,4 +1,4 @@
-package orm.billig.database_first_orm;
+package orm.billig.database_first_orm.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,8 +12,8 @@ public class EstadoPedido {
     @Column(name = "Id_estado", nullable = false)
     private Integer id;
 
-    @Column(name = "`descrição`")
-    private String descrição;
+    @Column(name = "`descricao`")
+    private String descricao;
 
     public Integer getId() {
         return id;
@@ -23,12 +23,12 @@ public class EstadoPedido {
         this.id = id;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
 }

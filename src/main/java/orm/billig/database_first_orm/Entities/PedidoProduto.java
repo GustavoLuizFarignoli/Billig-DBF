@@ -1,4 +1,4 @@
-package orm.billig.database_first_orm;
+package orm.billig.database_first_orm.Entities;
 
 import jakarta.persistence.*;
 

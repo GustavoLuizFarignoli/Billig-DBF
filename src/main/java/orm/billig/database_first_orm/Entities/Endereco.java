@@ -1,4 +1,4 @@
-package orm.billig.database_first_orm;
+package orm.billig.database_first_orm.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,10 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "`endereços`")
-public class Endereço {
+@Table(name = "`enderecos`")
+public class Endereco {
     @Id
-    @Column(name = "`Id_endereço`", nullable = false)
+    @Column(name = "`Id_endereco`", nullable = false)
     private Integer id;
 
     @Column(name = "cep")

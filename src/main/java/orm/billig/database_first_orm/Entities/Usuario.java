@@ -1,4 +1,4 @@
-package orm.billig.database_first_orm;
+package orm.billig.database_first_orm.Entities;
 
 import jakarta.persistence.*;
 
@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Usuario {
     @Id
     @Column(name = "Id_usuario", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "nome")
@@ -21,9 +22,9 @@ public class Usuario {
     @Column(name = "imagem")
     private String imagem;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "`idtipo_usuário`")
-    private TipoUsuario idtipoUsuário;
+    @ManyToOne
+    @JoinColumn(name = "`idtipo_usuario`")
+    private TipoUsuario idtipoUsuario;
 
     public Integer getId() {
         return id;
@@ -65,12 +66,12 @@ public class Usuario {
         this.imagem = imagem;
     }
 
-    public TipoUsuario getIdtipoUsuário() {
-        return idtipoUsuário;
+    public TipoUsuario getIdtipoUsuario() {
+        return idtipoUsuario;
     }
 
-    public void setIdtipoUsuário(TipoUsuario idtipoUsuário) {
-        this.idtipoUsuário = idtipoUsuário;
+    public void setIdtipoUsuario(TipoUsuario idtipoUsuario) {
+        this.idtipoUsuario = idtipoUsuario;
     }
 
 }
