@@ -29,8 +29,6 @@ public class UserController {
     @PostMapping(path = "/postuser")
     public Object saveUser(@RequestBody UsuarioDTO data_usuario)
     {
-        System.out.println(data_usuario);
-
         try {
             Integer tipoUsuarioId = data_usuario.getTipoUsuarioId();
 
@@ -52,25 +50,29 @@ public class UserController {
         }
     }
 
-    //  @PutMapping(path = "/updateuser/{id}")
-    //  public Object updateUser(@PathVariable("id") Integer id, @RequestBody Usuario updatedUsuario) {
-    //      try {
-    //          Usuario user = usuarioRepository.findById(id).map(usuario -> {
-    //              usuario.setNome(updatedUsuario.getNome());
-    //              usuario.setEmail(updatedUsuario.getEmail());
-    //              usuario.setSenha(updatedUsuario.getSenha());
-    //              return usuarioRepository.save(usuario);
-    //          }).orElse("Usuário não encontrado");
-    //          return usuarioRepository.findById(id).map(usuario -> {
-    //              usuario.setNome(updatedUsuario.getNome());
-    //              usuario.setEmail(updatedUsuario.getEmail());
-    //              usuario.setSenha(updatedUsuario.getSenha());
-    //              return usuarioRepository.save(usuario);
-    //          }).orElse("Usuário não encontrado");
-    //      } catch (Exception ex) {
-    //          return ex.getMessage();
-    //      }
-    //  }
+      @PutMapping(path = "/updateuser/{id}")
+      public Object updateUser(@PathVariable("id") Integer id, @RequestBody UsuarioDTO data_usuario) {
+          try {
+              Usuario user = usuarioRepository.findById(id).map(usuario -> {
+                  if (data_usuario.getNome() != null) {
+                      usuario.setNome(data_usuario.getNome());
+                  }
+                  if (data_usuario.getEmail() != null) {
+                      usuario.setEmail(data_usuario.getEmail());
+                  }
+                  if (data_usuario.getSenha() != null) {
+                      usuario.setSenha(data_usuario.getSenha());
+                  }
+                  if (data_usuario.getImagem() != null) {
+                      usuario.setImagem(data_usuario.getImagem());
+                  };
+                  return usuarioRepository.save(usuario);
+              }).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+          } catch (Exception ex) {
+              return ex.getMessage();
+          }
+          return null;
+      }
 
     @DeleteMapping(path = "/deleteuser/{id}")
     public Object deleteUser(@PathVariable("id") Integer id) {
